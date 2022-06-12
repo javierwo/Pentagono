@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+
+html, body {
+   font-family: 'Fredoka', sans-serif;
+   height: 100%;
+}
+
+* { 
+   padding: 0;
+   margin: 0;
+}
+
+/*Dándole el tamaño al componente padre*/
+#root {
+   height: 100%;
+}  
