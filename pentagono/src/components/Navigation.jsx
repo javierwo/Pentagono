@@ -6,6 +6,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import PollOutlinedIcon from '@mui/icons-material/PollOutlined';
 
 import TabEncuesta from "./TabEncuesta";
 
@@ -49,7 +50,7 @@ const Navigation = () => {
          },
       },
       typography: {
-         fontSize: 18
+         fontSize: 15
       },
    });
 
