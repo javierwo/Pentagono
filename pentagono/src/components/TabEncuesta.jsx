@@ -4,7 +4,9 @@ const TabEncuesta = () => {
    return (
       <>
          <Box >
+            
             TabEncuesta
+
          </Box>
       
       </>

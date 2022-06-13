@@ -7,6 +7,8 @@ import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import PollOutlinedIcon from '@mui/icons-material/PollOutlined';
+import PentagonOutlinedIcon from '@mui/icons-material/PentagonOutlined';
+import AnalyticsOutlinedIcon from '@mui/icons-material/AnalyticsOutlined';
 
 import TabEncuesta from "./TabEncuesta";
 
@@ -56,13 +58,11 @@ const Navigation = () => {
 
    return (
       <>
-         <Box sx={{height:'96%', ml:2, mr:2, mt:1,}}>
-
-            <Paper elevation={3} sx={{ height:'100%', bgcolor: '#FAFBFB'}}>
+         <Box sx={{height:'82vh', boxSizing:'border-box', p:2}}>
+            {/*boxSizing:'border-box no redimensina un contenedor al aplicar un padding*/ }
+            <Paper elevation={3} sx={{ height:'100%', p:2, boxSizing:'border-box', display: 'flex', bgcolor: '#FAFBFB'}}>
 
                <ThemeProvider theme={theme}>
-
-                  <Box sx={{p:2, height: '85%'}}>
 
                      <Tabs
                         value={value}
@@ -70,27 +70,25 @@ const Navigation = () => {
                         textColor="secondary"
                         indicatorColor="primary"
                         aria-label="tabs"
-                        
+                        orientation="vertical"
                      >
-                        <Tab label="Encuesta" sx={{textTransform: 'none'}} />
-                        <Tab label="Resultados Individuales" sx={{textTransform: 'none'}} />
-                        <Tab label="Resultados Generales" sx={{textTransform: 'none'}} />
+                        <Tab label="Encuesta" icon={<PollOutlinedIcon />} iconPosition="top" sx={{textTransform: 'none'}} />
+                        <Tab label="Resultados Individuales" icon={<PentagonOutlinedIcon />} iconPosition="top" sx={{textTransform: 'none'}} />
+                        <Tab label="Resultados Generales" icon={<AnalyticsOutlinedIcon />} iconPosition="top" sx={{textTransform: 'none'}} />
 
                      </Tabs>
 
-                     <TabPanel value={value} index={0} sx={{bgcolor: 'salmon', height: '100%'}}>
+                     <TabPanel value={value} index={0}  sx={{bgcolor: 'salmon', height: '100%', width:'90%', overflow: 'auto'}}>
                         <TabEncuesta />
                      </TabPanel>
 
-                     <TabPanel value={value} index={1} sx={{bgcolor: 'yellow', height: '100%'}}>
+                     <TabPanel value={value} index={1} sx={{bgcolor: 'gray', height: '100%', width:'90%', overflow: 'auto'}}>
                         Item Two
                      </TabPanel>
 
-                     <TabPanel value={value} index={2} sx={{bgcolor: 'violet', height: '100%'}}>
+                     <TabPanel value={value} index={2} sx={{bgcolor: 'violet', height: '100%', width:'90%', overflow: 'auto'}}>
                         Item Three
                      </TabPanel>
-
-                  </Box>
 
                </ThemeProvider>
             </Paper>

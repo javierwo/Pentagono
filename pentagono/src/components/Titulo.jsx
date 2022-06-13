@@ -10,7 +10,7 @@ const Titulo = () => {
                flexDirection: 'column', 
                alignItems: 'center', 
                justifyContent: 'space-evenly', 
-               height:'100%'
+               height:'18vh'
             }}
          >
             <Typography variant="h3" align="center" component="div">
