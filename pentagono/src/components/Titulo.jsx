@@ -19,7 +19,7 @@ const Titulo = () => {
                Pentágono de Competencias TIC
             </Typography>
 
-            <Typography variant="subtitle1" align="center" component="div" sx={{width: '50%'}}>
+            <Typography variant="subtitle1" align="center" component="div" sx={{width: '100%'}}>
                <Divider>Evaluación de los momentos para las cinco competencias xxx</Divider>
             </Typography>
          </Box>

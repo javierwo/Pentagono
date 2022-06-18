@@ -40,7 +40,7 @@ const RadarChart = () => {
       datasets: [
          {
             label: 'Nivel de Competencia',
-            data: [1,3,4,2,5],
+            data: [1,2,3,1,2],
             // you can set indiviual colors for each bar
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             borderColor: 'rgba(255, 99, 132, 1)',
@@ -67,16 +67,47 @@ const RadarChart = () => {
          }
       },
 
-      /*
+      
       scales: {
          r: {
-            angleLines: {
-               display: false
+            grid: {
+               color: ['#ADFFC3', '#6DD19C', '#46B47F'],
+               lineWidth: 40, 
+               offset: true, 
+               tickLength: 100, 
+               tickWidth: 500,
             },
-         }   
+            max: 3,
+            min: 0,
+            ticks: {
+               stepSize: 1,
+               //maxTicksLimit: 5, 
+               //stepSize: 1,
+               //count: 3
+               //backdropPadding: 50, 
+               display: false,
+               //padding: 50
+            },      
+            angleLines: {
+               display: true, 
+               maxRotation: 25,
+               minRotation: 25,
+               //lineWidth: 50
+            }, 
+            pointLabels: {
+               display: true, 
+               padding: 35,
+               //centerPointLabels: true,
+               //color: ['red', 'green', 'blue', 'violet', 'salmon']
+            }
+         
+         }
 
-      }
-      */
+      }, 
+      
+
+
+      /**/
    }
 
    return (
