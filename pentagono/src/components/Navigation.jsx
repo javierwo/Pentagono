@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import Typography from "@mui/material/Typography";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider, createTheme, responsiveFontSizes} from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
@@ -40,51 +40,64 @@ const Navigation = () => {
       );
    }
 
-   const theme = createTheme({
+   var theme = createTheme({
       palette: {
+         type: 'light',
+         background: {
+            main: "#F7F7F7",
+         },
          primary: {
-            main: "#FD353C",
+            main: "#191C25"
          },
          secondary: {
-            main: "#f50057",
+            main: "#FF0000"
          },
          text: {
-            primary: "#ffffff",
+            primary: "#191C25",
+            secondary: "#40495D",
+            tabs: "#828DA9"
          },
+         tabs: {
+            main: "#FF00FF"
+         }
       },
       typography: {
-         fontSize: 15,
+         fontFamily: 'Merriweather',
       },
    });
 
+   theme = responsiveFontSizes(theme);
+
    return (
       <>
-         <Box
-            sx={{
-               height: "82vh",
-               boxSizing: "border-box",
-               p: 2,
-            }}
-         >
-         {/*boxSizing:'border-box no redimensina un contenedor al aplicar un padding*/}
-
+         <ThemeProvider theme={theme}>
             <Box
                sx={{
-                  height: "100%",
-                  pt: 2,
-                  pb: 2,
+                  height: "82vh",
                   boxSizing: "border-box",
-                  display: "flex",
-                  bgcolor: "#FAFBFB",
-                  borderRadius: 3,
+                  pb: 2,
+                  pl: 2,
+                  pr: 2,
                }}
             >
+            {/*boxSizing:'border-box no redimensina un contenedor al aplicar un padding*/}
 
-               <ThemeProvider theme={theme}>
+               <Box
+                  sx={{
+                     height: "100%",
+                     pt: 2,
+                     pb: 2,
+                     boxSizing: "border-box",
+                     display: "flex",
+                     bgcolor: "background.main",
+                     borderRadius: 3,
+                  }}
+               >
+
                   <Tabs
                      value={value}
                      onChange={handleChange}
-                     textColor="secondary"
+                     textColor="primary"
                      indicatorColor="primary"
                      aria-label="tabs"
                      orientation="vertical"
@@ -93,19 +106,19 @@ const Navigation = () => {
                         label="Encuesta"
                         icon={<PollOutlinedIcon />}
                         iconPosition="top"
-                        sx={{ textTransform: "none" }}
+                        sx={{ textTransform: "none", color: "text.tabs"}}
                      />
                      <Tab
                         label="Resultados Individuales"
                         icon={<PentagonOutlinedIcon />}
                         iconPosition="top"
-                        sx={{ textTransform: "none" }}
+                        sx={{ textTransform: "none", color: "text.tabs"}}
                      />
                      <Tab
                         label="Resultados Generales"
                         icon={<AnalyticsOutlinedIcon />}
                         iconPosition="top"
-                        sx={{ textTransform: "none" }}
+                        sx={{ textTransform: "none", color: "text.tabs"}}
                      />
                   </Tabs>
 
@@ -147,9 +160,11 @@ const Navigation = () => {
                   >
                      Item Three
                   </TabPanel>
-               </ThemeProvider>
+
+               </Box>
             </Box>
-         </Box>
+         </ThemeProvider>
+
       </>
    );
 

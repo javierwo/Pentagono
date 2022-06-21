@@ -12,19 +12,21 @@ const TabResultadosIndividuales = () => {
       <Grid
          container
          //rowSpacing={{ xs: 1, sm: 2, md: 1 }}
-         columnSpacing={{ xs: 1, sm: 2, md: 1 }}
+         //columnSpacing={{ xs: 1, sm: 2, md: 1 }}
          sx={{ 
             height: "100%", 
             boxSizing: "border-box",
-            p:1
+            p:0
          }}
       >   
 
          <Grid 
             item 
-            xs={6}
+            xs={12}
+            md={6}
             sx={{ 
-               height: {height} , 
+               height: {height},
+               p: 1
             }}
          >
             <Paper 
@@ -46,9 +48,11 @@ const TabResultadosIndividuales = () => {
          </Grid>
 
          <Grid 
-            item xs={6}
+            xs={12}
+            md={6}
             sx={{ 
-               height: {height}, 
+               height: {height},
+               p: 1
             }}
          >
             <Paper 
