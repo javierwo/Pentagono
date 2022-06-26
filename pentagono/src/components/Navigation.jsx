@@ -42,24 +42,9 @@ const Navigation = () => {
 
    var theme = createTheme({
       palette: {
-         type: 'light',
-         background: {
-            main: "#F7F7F7",
-         },
          primary: {
-            main: "#191C25"
+            main: "#FF9F00"
          },
-         secondary: {
-            main: "#FF0000"
-         },
-         text: {
-            primary: "#191C25",
-            secondary: "#40495D",
-            tabs: "#828DA9"
-         },
-         tabs: {
-            main: "#FF00FF"
-         }
       },
       typography: {
          fontFamily: 'Merriweather',
@@ -70,29 +55,20 @@ const Navigation = () => {
 
    return (
       <>
-         <ThemeProvider theme={theme}>
+         
+         <Box
+            //{/*boxSizing:'border- box no redimensiona un contenedor al aplicar un padding*/}
+            className='box-border px-3 pb-3'
+            sx={{
+               height: "82vh",
+            }}
+         >
+         
             <Box
-               sx={{
-                  height: "82vh",
-                  boxSizing: "border-box",
-                  pb: 2,
-                  pl: 2,
-                  pr: 2,
-               }}
+               className='bg-tabsbg h-full box-border py-3 rounded-xl flex'
             >
-            {/*boxSizing:'border-box no redimensina un contenedor al aplicar un padding*/}
 
-               <Box
-                  sx={{
-                     height: "100%",
-                     pt: 2,
-                     pb: 2,
-                     boxSizing: "border-box",
-                     display: "flex",
-                     bgcolor: "background.main",
-                     borderRadius: 3,
-                  }}
-               >
+               <ThemeProvider theme={theme}>
 
                   <Tabs
                      value={value}
@@ -106,65 +82,52 @@ const Navigation = () => {
                         label="Encuesta"
                         icon={<PollOutlinedIcon />}
                         iconPosition="top"
-                        sx={{ textTransform: "none", color: "text.tabs"}}
+                        className='text-tabscolor normal-case'
                      />
                      <Tab
                         label="Resultados Individuales"
                         icon={<PentagonOutlinedIcon />}
                         iconPosition="top"
-                        sx={{ textTransform: "none", color: "text.tabs"}}
+                        className='text-tabscolor normal-case'
                      />
                      <Tab
                         label="Resultados Generales"
                         icon={<AnalyticsOutlinedIcon />}
                         iconPosition="top"
-                        sx={{ textTransform: "none", color: "text.tabs"}}
+                        className='text-tabscolor normal-case'
                      />
                   </Tabs>
 
                   <TabPanel
+                     className='h-full w-full overflow-auto'
                      value={value}
                      index={0}
-                     sx={{ 
-                        bgcolor: "salmon",
-                        height: "100%", 
-                        width: "100%", 
-                        overflow: "auto" 
-                     }}
                   >
                      <TabEncuesta />
                   </TabPanel>
 
                   <TabPanel
+                     className='h-full w-full overflow-auto'
                      value={value}
                      index={1}
-                     sx={{
-                        //bgcolor: "green",
-                        height: "100%",
-                        width: "100%",
-                        overflow: "auto",
-                     }}
                   >
                      <TabResultadosIndividuales />
                   </TabPanel>
 
                   <TabPanel
+                     className='h-full w-full overflow-auto'
                      value={value}
                      index={2}
-                     sx={{
-                        bgcolor: "violet",
-                        height: "100%",
-                        width: "100%",
-                        overflow: "auto",
-                     }}
                   >
-                     Item Three
+                     Resultados generales
                   </TabPanel>
 
-               </Box>
-            </Box>
-         </ThemeProvider>
+               </ThemeProvider>
 
+            </Box>
+
+         </Box>
+         
       </>
    );
 

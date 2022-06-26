@@ -1,0 +1,204 @@
+         <Grid 
+            xs={12}
+            md={6}
+            sx={{ 
+               height: {height},
+               p: 1
+            }}
+         >
+            <Paper 
+               elevation={2} 
+               sx={{ 
+                  height: "100%", 
+                  color: "black", 
+                  borderRadius: 3
+               }}
+            >
+               <Box>Interpretación</Box>
+            </Paper>
+         </Grid>
+
+
+
+                  <Grid 
+            item 
+            xs={12}
+            md={6}
+            sx={{ 
+               height: {height},
+               p: 1
+            }}
+         >
+            <Paper 
+               elevation={2} 
+               sx={{ 
+                  height: "100%",
+                  borderRadius: 3,
+                  bgcolor: "white"
+               }}
+            >
+               <Box 
+                  sx={{ 
+                     height: "100%" 
+                  }}
+               >
+                  <RadarChart />
+               </Box>
+            </Paper>
+         </Grid>
+
+
+                  <Paper 
+                     elevation={2} 
+                     sx={{ 
+                        //height: heightInterpretacion, 
+                        color: "black", 
+                        borderRadius: 3,
+                        flexGrow: 1
+                     }}
+                  >
+                     <Box>Interpretación</Box>
+                  </Paper>
+                  <Paper 
+                     elevation={2} 
+                     sx={{ 
+                        //height: heightInterpretacion, 
+                        color: "black", 
+                        borderRadius: 3,
+                        flexGrow: 1
+                     }}
+                  >
+                     <Box>Interpretación</Box>
+                  </Paper>
+
+                  <Paper 
+                     elevation={2} 
+                     sx={{ 
+                        //height: heightInterpretacion, 
+                        color: "black", 
+                        borderRadius: 3,
+                        flexGrow: 1
+                     }}
+                  >
+                     <Box>Interpretación</Box>
+                  </Paper>
+
+                  <Paper 
+                     elevation={2} 
+                     sx={{ 
+                        //height: heightInterpretacion, 
+                        color: "black", 
+                        borderRadius: 3,
+                        flexGrow: 1
+                     }}
+                  >
+                     <Box>Interpretación</Box>
+                  </Paper>
+
+                  <Paper 
+                     elevation={2} 
+                     sx={{ 
+                        //height: heightInterpretacion, 
+                        color: "black", 
+                        borderRadius: 3,
+                        flexGrow: 1
+                     }}
+                  >
+                     <Box>Interpretación</Box>
+                  </Paper>
+
+
+
+ <Box
+         sx = {{
+            bgcolor: 'violet',
+         }}
+      >
+         <motion.div>
+            <AnimatePresence initial={false}>
+
+               <motion.div
+                  key="question"
+                  onClick={() => setIsOpen(!isOpen)}
+                  animate={{ backgroundColor: isOpen ? "#FF0088" : "#0055FF" }}
+               >
+                  <motion.div >
+
+                     <Paper 
+                        elevation={2} 
+                        sx={{ 
+                           //height: heightInterpretacion, 
+                           color: "black", 
+                           borderRadius: 3,
+                           flexGrow: 1
+                        }}
+                     >
+                        <Box>Do you like animations?</Box>
+                     </Paper>
+
+                  </motion.div>
+               </motion.div>
+
+            {isOpen && (
+               <motion.div
+                  key="answer"
+                  initial="collapsed"
+                  animate="open"
+                  exit="collapsed"
+                  variants={{
+                     open: { opacity: 1, height: "auto" },
+                     collapsed: { opacity: 0, height: 0 }
+                  }}
+                  transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+                  //className="p-2 text-lg text-gray-700 border-l border-b border-gray-300"
+               >
+
+                  
+                  <Box
+                     sx = {{
+                        bgcolor: 'white',
+                        borderRadius: 3
+
+                     }}
+                  >
+                     Yes i do
+                  </Box>
+
+
+               </motion.div>
+            )}
+            </AnimatePresence>
+         </motion.div>
+
+      </Box>
+
+
+
+
+      <motion.div
+         key="question"
+         //className="rounded-tr-md relative z-20  rounded-br-md shadow-sm px-1 py-2 bg-blue-200 cursor-pointer font-open border-l-2 border-yellow-500"
+         onClick={() => setIsOpen(!isOpen)}
+      >
+         <motion.div>
+            Do you like animations?
+         </motion.div>
+      </motion.div>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.section
+            key="content"
+            initial="collapsed"
+            animate="open"
+            exit="collapsed"
+            variants={{
+              open: { opacity: 1, height: "auto", duration: 1},
+              collapsed: { opacity: 0, height: 0}
+            }}
+            transition={{ duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] }}
+          >
+               xxxxxxxxx
+          </motion.section>
+        )}
+      </AnimatePresence>

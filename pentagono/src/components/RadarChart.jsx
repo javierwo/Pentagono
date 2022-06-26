@@ -42,14 +42,14 @@ const RadarChart = () => {
             label: 'Nivel de Competencia',
             data: [1,2,3,1,2],
             // you can set indiviual colors for each bar
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 202, 115, 0.5)',
+            borderColor: '#FF9F00',
             borderWidth: 2,
          }
       ]
    }
 
-   const options = {
+   const options = { 
       responsive: true,
       maintainAspectRatio: false, //para que su tamaño no sea menor al div
       layout: {
@@ -61,21 +61,21 @@ const RadarChart = () => {
             text: 'COMPETENCIAS DOCENTES & TÍTULO', 
             paddingTop: 4
          },
-         subtitle: {
-            display: true,
-            text: 'AQUÍ VA UN SUBTÍTULO'
-         }
+         //subtitle: {
+            //display: true,
+            //text: 'AQUÍ VA UN SUBTÍTULO'
+         //}
       },
 
       
       scales: {
          r: {
             grid: {
-               color: ['#ADFFC3', '#6DD19C', '#46B47F'],
-               lineWidth: 40, 
-               offset: true, 
-               tickLength: 100, 
-               tickWidth: 500,
+               color: ['#6996D3', '#4380D3', '#05316D'],
+               //lineWidth: 40, 
+               //offset: true, 
+               //tickLength: 100, 
+               //tickWidth: 500,
             },
             max: 3,
             min: 0,
@@ -90,13 +90,11 @@ const RadarChart = () => {
             },      
             angleLines: {
                display: true, 
-               maxRotation: 25,
-               minRotation: 25,
                //lineWidth: 50
             }, 
             pointLabels: {
                display: true, 
-               padding: 35,
+               //padding: 35,
                //centerPointLabels: true,
                //color: ['red', 'green', 'blue', 'violet', 'salmon']
             }
