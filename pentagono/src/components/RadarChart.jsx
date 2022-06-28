@@ -39,13 +39,30 @@ const RadarChart = () => {
       // datasets is an array of objects where each object represents a set of data to display corresponding to the labels above. for brevity, we'll keep it at one object
       datasets: [
          {
-            label: 'Nivel de Competencia',
+            label: 'Momento',
             data: [1,2,3,1,2],
-            // you can set indiviual colors for each bar
             backgroundColor: 'rgba(255, 202, 115, 0.5)',
             borderColor: '#FF9F00',
             borderWidth: 2,
-         }
+         },
+         {
+            backgroundColor: "#6996D3",
+            pointRadius: 0,
+            borderWidth: 0,
+            data: [1,1,1,1,1]
+         },
+         {
+            backgroundColor: "#4380D3",
+            pointRadius: 0,
+            borderWidth: 0,
+            data: [2,2,2,2,2]
+         },
+         {
+            backgroundColor: "#05316D",
+            pointRadius: 0,
+            borderWidth: 0,
+            data: [3,3,3,3,3]
+         },
       ]
    }
 
@@ -57,16 +74,32 @@ const RadarChart = () => {
       }, 
       plugins: {
          title: {
-            display: true,
+            display: false,
             text: 'COMPETENCIAS DOCENTES & TÍTULO', 
             paddingTop: 4
          },
-         //subtitle: {
-            //display: true,
-            //text: 'AQUÍ VA UN SUBTÍTULO'
-         //}
+         subtitle: {
+            display: false,
+            text: 'AQUÍ VA UN SUBTÍTULO'
+         },
+         legend: {
+            labels: {
+               filter: function(item, chart) {
+                  return item.datasetIndex !== 1  && item.datasetIndex !== 2 && item.datasetIndex !== 3;
+               }
+            }
+         },
+         tooltip: {
+            enabled: false
+         }
+      
       },
 
+      elements: {
+         point: {
+            radius: 5
+         }
+      },
       
       scales: {
          r: {
@@ -97,6 +130,9 @@ const RadarChart = () => {
                //padding: 35,
                //centerPointLabels: true,
                //color: ['red', 'green', 'blue', 'violet', 'salmon']
+               font: {
+                  size: 13
+               }
             }
          
          }

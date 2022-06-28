@@ -14,6 +14,7 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import EngineeringIcon from '@mui/icons-material/Engineering';
 import ContentPasteSearchIcon from '@mui/icons-material/ContentPasteSearch';
 import ComputerIcon from '@mui/icons-material/Computer';
+import { Divider } from "@mui/material";
 
 const Accordion = (props) => {
 
@@ -31,21 +32,25 @@ const Accordion = (props) => {
    let COLORMOMENTO; 
    let MOMENTO; 
    let ICONO;
+   let CHIP;
 
    switch (props.momento) {
       case 1:
          COLORMOMENTO = COLORMOMENTO1;
          MOMENTO = "Momento Innovador"
+         CHIP = <Chip label={MOMENTO} size="small" className="text-white bg-momento1 text-xs"/>
       break;
       
       case 2:
          COLORMOMENTO = COLORMOMENTO2;
          MOMENTO = "Momento Integrador"
+         CHIP = <Chip label={MOMENTO} size="small" className="text-white bg-momento2 text-xs"/>
       break;
       
       case 3:
          COLORMOMENTO = COLORMOMENTO3;
          MOMENTO = "Momento Explorador"
+         CHIP = <Chip label={MOMENTO} size="small" className="text-white bg-momento3 text-xs"/>
       break;
 
       default:
@@ -55,48 +60,33 @@ const Accordion = (props) => {
 
    switch (props.competencia) {
       case "Competencia Pedagógica":
-         ICONO = <SchoolIcon fontSize="large" sx={{ color: COLORMOMENTO}}> </SchoolIcon>
+         ICONO = <SchoolIcon fontSize="medium" sx={{ color: COLORMOMENTO}}> </SchoolIcon>
       break;
       
       case "Competencia Comunicativa":
-         ICONO = <GroupsIcon fontSize="large" sx={{ color: COLORMOMENTO}}> </GroupsIcon>
+         ICONO = <GroupsIcon fontSize="medium" sx={{ color: COLORMOMENTO}}> </GroupsIcon>
       break;
       
       case "Competencia de Gestión":
-         ICONO = <EngineeringIcon fontSize="large" sx={{ color: COLORMOMENTO}}> </EngineeringIcon>
+         ICONO = <EngineeringIcon fontSize="medium" sx={{ color: COLORMOMENTO}}> </EngineeringIcon>
       break;
 
       case "Competencia Investigativa":
-         ICONO = <ContentPasteSearchIcon fontSize="large" sx={{ color: COLORMOMENTO}}> </ContentPasteSearchIcon>
+         ICONO = <ContentPasteSearchIcon fontSize="medium" sx={{ color: COLORMOMENTO}}> </ContentPasteSearchIcon>
       break;
 
       case "Competencia Tecnológica":
-         ICONO = <ComputerIcon fontSize="large" sx={{ color: COLORMOMENTO}}> </ComputerIcon>
+         ICONO = <ComputerIcon fontSize="medium" sx={{ color: COLORMOMENTO}}> </ComputerIcon>
       break;
 
       default:
-         ICONO = <SchoolIcon fontSize="large" sx={{ color: COLORMOMENTO}}> </SchoolIcon>
+         ICONO = <SchoolIcon fontSize="medium" sx={{ color: COLORMOMENTO}}> </SchoolIcon>
    } 
 
    var theme = createTheme({
-      palette: {
-         type: 'light',
-         primary: {
-            main: COLORMOMENTO
-         }
-      },         
-      text: {
-         primary: "#191C25",
-         secondary: "#40495D",
-         tabs: "#828DA9",
-         resultDocente: "#919191",
-         tituloInterpretacion: "#FF0000",
-         red: "#FF0000"
-      },
       typography: {
          fontFamily: 'Merriweather',
-         fontSize: 11
-      },
+      }
    });
 
    theme = responsiveFontSizes(theme);
@@ -104,99 +94,66 @@ const Accordion = (props) => {
    return (
 
       <>
-
          <Box
-            sx = {{
-               height: '100%',
-               //bgcolor:'white'
-            }}
+            className="h-full bg-white p-2"
          >
 
             <motion.div
-               key="question"
+               key="card"
                onClick={() => setIsOpen(!isOpen)}
                //animate={{ backgroundColor: isOpen ? "#FF0088" : "#0055FF" }}
-               whileHover={{ scale: 1.01 }}
+               //whileHover={{ scale: 1.01 }}
                className="h-full"
             >
 
-               <Paper 
-                  elevation={0} 
-                  sx={{ 
-                     borderRadius: 3,
-                     height: '100%',
-                     display: 'flex',
-                     flexDirection: 'row'
+               <Box
+                  className="flex items-center justify-between"
+                  sx={{
+                     height: '30%'
                   }}
                >
+                  {CHIP}
+                  {ICONO}
+               </Box>
 
-                  <Grid
-                     container
-                     sx={{ 
-                        height: "100%", 
-                        boxSizing: "border-box"
+               <ThemeProvider theme={theme}>
+                  <Box 
+                     className="flex items-center"
+                     sx={{
+                        height: '30%'
                      }}
-                  >   
-
-                     <Grid 
-                        item 
-                        xs={3} 
-                        md={2}
-                        sx={{ 
-                           height: '100%',
-                        }}
+                  >
+                     <Typography 
+                        variant="subtitle1" 
+                        component="div"
+                        className="text-subtitulo"
                      >
-                        <Box
-                           sx={{
-                              height:'100%',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center'
-                           }}
-                        >
-                           {ICONO}
-                        </Box>
-                     </Grid>
+                        {props.competencia}
+                     </Typography>
+                  </Box>
 
-                     <Grid 
-                        item 
-                        xs={9} 
-                        md={10}
+                  <Divider />
+
+                  <Box
+                     className="overflow-auto"
+                     sx={{
+                        height: '40%'
+                     }}
+                  >
+                     <Typography 
+                        variant="body1" 
+                        component="div"
+                        className="text-colorinterpret pt-2 text-xs"
                      >
-                        <Stack 
-                           direction="column"
-                           justifyContent="center"
-                           spacing={0.3}
-                           className="h-full"
-                        >
-                           <Box>  
-                              <ThemeProvider theme={theme}>
-                                 <Chip label={MOMENTO} size="small" color="primary"/>
-                              </ThemeProvider>
-                           </Box>
+                        {props.interpret}
+                     </Typography>
+                  </Box> 
 
-                           <ThemeProvider theme={theme}>
-                              <Typography 
-                                 variant="h6" 
-                                 component="div"
-                                 sx={{
-                                    color: "text.secondary"
-                                 }}
-                              >
-                                 {props.competencia}
-                              </Typography>
-                           </ThemeProvider>
-                           
-                        </Stack>
-                           
-                     </Grid>
-
-                  </Grid>
-
-               </Paper> 
-
+               </ThemeProvider>
+               
             </motion.div>
 
+            {/**
             <AnimatePresence 
                initial={false}>
                {isOpen && (
@@ -223,7 +180,7 @@ const Accordion = (props) => {
                )}
 
             </AnimatePresence>
-
+            */}
          </Box>
             
       </>

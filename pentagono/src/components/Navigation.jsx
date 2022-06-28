@@ -65,7 +65,7 @@ const Navigation = () => {
          >
          
             <Box
-               className='bg-tabsbg h-full box-border py-3 rounded-xl flex'
+               className='bg-tabsbg h-full box-border flex rounded-xl'
             >
 
                <ThemeProvider theme={theme}>
@@ -77,6 +77,7 @@ const Navigation = () => {
                      indicatorColor="primary"
                      aria-label="tabs"
                      orientation="vertical"
+                     className="py-2 box-content"
                   >
                      <Tab
                         label="Encuesta"

@@ -202,3 +202,98 @@
           </motion.section>
         )}
       </AnimatePresence>
+
+
+
+               <Grid 
+                  item 
+                  xs={12}
+                  md={12}
+                  sx={{ 
+                     height: heightResultDocents,
+                     pl: 1,
+                     pr: 1,
+                     pb: 0.5,
+                     //bgcolor: 'red',
+                     display: 'flex',
+                     direction: 'row',
+                     alignItems: 'flex-end'
+                  }}
+               >
+
+                  <Box 
+                     sx={{ 
+                        //bgcolor: 'green',
+                        width: "100%"
+
+                     }}
+                  >
+                     <Typography 
+                        variant="subtitle2" 
+                        component="div"
+                        sx={{
+                           fontWeight: 400,
+                           fontSize: 20, 
+                           color: "text.resultDocente",
+                           bgcolor: "white"
+                        }}
+                     >
+                        Resultados de Nombre del Docente
+                     </Typography>
+                     <Divider />
+                  </Box>
+                  
+               </Grid>
+
+               <Grid 
+                  item 
+                  xs={12}
+                  md={6}
+                  sx={{ 
+                     height: heightCharts,
+                     p: 1,
+                     //bgcolor: 'green'
+                  }}
+               >
+
+                  
+                  
+                  <Paper 
+                     elevation={0} 
+                     sx={{ 
+                        height: "100%",
+                        borderRadius: 3,
+                        bgcolor: "white"
+                     }}
+                  >
+                     <Box 
+                        sx={{ 
+                           height: "100%" 
+                        }}
+                     >
+                        <RadarChart />
+                     </Box>
+                  </Paper>
+               </Grid>
+
+               <Grid 
+                  xs={12}
+                  md={6}
+                  sx={{ 
+                     height: heightCharts,
+                     p: 1,
+                     display: 'flex',
+                     flexDirection: 'column',
+                     //justifyContent: 'space-between',
+                     gap:1.5
+                     //bgcolor: 'salmon'
+                  }}
+               >
+
+                  <Accordion competencia={"Competencia Pedagógica"} momento={1}/>
+                  <Accordion competencia={"Competencia Comunicativa"} momento={2}/>
+                  <Accordion competencia={"Competencia de Gestión"} momento={3}/>
+                  <Accordion competencia={"Competencia Investigativa"} momento={1}/>
+                  <Accordion competencia={"Competencia Tecnológica"} momento={2}/>
+
+               </Grid>
