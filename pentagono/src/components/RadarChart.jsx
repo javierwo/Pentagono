@@ -35,13 +35,13 @@ const RadarChart = () => {
    const momentos = ['Exploratorio', 'Investigativo', 'Funcional'];
 
    const data = {
-      labels: ['Pedagógica', 'Comunicativa', 'De Gestión', 'Investigativa', 'Tecnológica'],
+      labels: ['Competencia Pedagógica', 'Competencia Comunicativa', 'Competencia De Gestión', 'Competencia Investigativa', 'Competencia Tecnológica'],
       // datasets is an array of objects where each object represents a set of data to display corresponding to the labels above. for brevity, we'll keep it at one object
       datasets: [
          {
             label: 'Momento',
             data: [1,2,3,1,2],
-            backgroundColor: 'rgba(255, 202, 115, 0.5)',
+            //backgroundColor: 'rgba(255, 202, 115, 0.5)',
             borderColor: '#FF9F00',
             borderWidth: 2,
          },

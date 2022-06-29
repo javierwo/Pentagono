@@ -158,7 +158,7 @@ const TabResultadosIndividuales = (props) => {
                               item 
                               xs={12} 
                               md={6} 
-                              className="h-2/5 pb-3 pr-3"
+                              className="h-1/2 pb-3 pr-3"
                            >
                               <Accordion competencia={"Competencia Pedagógica"} momento={1} interpret={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."} />
                            </Grid>
@@ -166,7 +166,7 @@ const TabResultadosIndividuales = (props) => {
                               item 
                               xs={12} 
                               md={6} 
-                              className="h-2/5 pb-3 pr-3"
+                              className="h-1/2 pb-3 pr-3"
                            >
                               <Accordion competencia={"Competencia Comunicativa"} momento={2} interpret={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."} />
                            </Grid>
@@ -174,7 +174,7 @@ const TabResultadosIndividuales = (props) => {
                               item 
                               xs={12} 
                               md={6} 
-                              className="h-2/5 pb-3 pr-3"
+                              className="h-1/2 pb-3 pr-3"
                            >
                               <Accordion competencia={"Competencia de Gestión"} momento={3} interpret={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."} />
                            </Grid>
@@ -182,7 +182,7 @@ const TabResultadosIndividuales = (props) => {
                               item 
                               xs={12} 
                               md={6} 
-                              className="h-2/5 pb-3 pr-3"
+                              className="h-1/2 pb-3 pr-3"
                            >
                               <Accordion competencia={"Competencia Investigativa"} momento={1} interpret={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."} />
                            </Grid>
@@ -190,7 +190,7 @@ const TabResultadosIndividuales = (props) => {
                               item 
                               xs={12} 
                               md={6} 
-                              className="h-2/5 pr-3"
+                              className="h-1/2 pr-3"
                            >
                               <Accordion competencia={"Competencia Tecnológica"} momento={2} interpret={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."} />
                            </Grid>

@@ -109,7 +109,7 @@ const Accordion = (props) => {
                <Box
                   className="flex items-center justify-between"
                   sx={{
-                     height: '30%'
+                     height: '20%'
                   }}
                >
                   {CHIP}
@@ -120,7 +120,7 @@ const Accordion = (props) => {
                   <Box 
                      className="flex items-center"
                      sx={{
-                        height: '30%'
+                        height: '20%'
                      }}
                   >
                      <Typography 
@@ -137,7 +137,7 @@ const Accordion = (props) => {
                   <Box
                      className="overflow-auto"
                      sx={{
-                        height: '40%'
+                        height: '60%'
                      }}
                   >
                      <Typography 
