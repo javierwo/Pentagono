@@ -5,7 +5,7 @@ const TabEncuesta = () => {
    return (
       <>
          <Box 
-            className="h-full box-border p-2"
+            className="h-full"
             component="div" 
          >
             <Paper 

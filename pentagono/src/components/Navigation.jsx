@@ -57,19 +57,17 @@ const Navigation = () => {
       <>
          
          <Box
-            //{/*boxSizing:'border- box no redimensiona un contenedor al aplicar un padding*/}
+            //boxSizing:'border- box no redimensiona un contenedor al aplicar un padding
             className='box-border px-3 pb-3'
             sx={{
-               height: "82vh",
+               height: "87vh",
             }}
          >
          
             <Box
-               className='bg-tabsbg h-full box-border flex rounded-xl'
+               className='bg-tabsbg3 h-full flex rounded-xl'
             >
-
                <ThemeProvider theme={theme}>
-
                   <Tabs
                      value={value}
                      onChange={handleChange}
@@ -83,24 +81,24 @@ const Navigation = () => {
                         label="Encuesta"
                         icon={<PollOutlinedIcon />}
                         iconPosition="top"
-                        className='text-tabscolor normal-case'
+                        className='text-apple normal-case'
                      />
                      <Tab
                         label="Resultados Individuales"
                         icon={<PentagonOutlinedIcon />}
                         iconPosition="top"
-                        className='text-tabscolor normal-case'
+                        className='text-apple normal-case'
                      />
                      <Tab
                         label="Resultados Generales"
                         icon={<AnalyticsOutlinedIcon />}
                         iconPosition="top"
-                        className='text-tabscolor normal-case'
+                        className='text-apple normal-case'
                      />
                   </Tabs>
 
                   <TabPanel
-                     className='h-full w-full overflow-auto'
+                     className='h-full w-full overflow-auto p-2'
                      value={value}
                      index={0}
                   >
@@ -108,7 +106,7 @@ const Navigation = () => {
                   </TabPanel>
 
                   <TabPanel
-                     className='h-full w-full overflow-auto'
+                     className='h-full w-full overflow-auto px-2 pb-2'
                      value={value}
                      index={1}
                   >

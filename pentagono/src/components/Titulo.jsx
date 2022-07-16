@@ -19,21 +19,21 @@ const Titulo = () => {
       <>
          <Box 
             sx={{
-               height:'18vh',
+               height:'13vh',
                p:1
             }}
          >
 
             <ThemeProvider theme={theme}>
                <Stack 
-                  justifyContent="space-evenly"
+                  justifyContent="center"
                   spacing={0.5}
                   className='h-full'
                >
-                  <Typography className="text-titulo w-full font-normal" variant="h3" align="center" component="div">
+                  <Typography className="text-titulo w-full font-normal" variant="h4" align="center" component="div">
                      Pentágono de Competencias TIC
                   </Typography>
-                  <Typography className="text-subtitulo w-full font-light text-lg" variant="subtitle2" align="center" component="div">
+                  <Typography className="text-subtitulo w-full font-light text-base" variant="subtitle2" align="center" component="div">
                      Evaluación de los momentos para las cinco competencias
                   </Typography>
                </Stack>

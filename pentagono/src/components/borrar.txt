@@ -297,3 +297,150 @@
                   <Accordion competencia={"Competencia Tecnológica"} momento={2}/>
 
                </Grid>
+
+
+
+
+               Accordion
+                                    <Grid 
+                           className="overflow-auto"
+                           container 
+                           sx={{ 
+                              height:'92%'
+                           }}
+                        >
+                           <Grid 
+                              item 
+                              xs={12} 
+                              md={6} 
+                              className="h-1/2 pb-3 pr-3"
+                           >
+                              <Acordion competencia={"Competencia Pedagógica"} momento={1} interpret={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."} />
+                           </Grid>
+                           <Grid 
+                              item 
+                              xs={12} 
+                              md={6} 
+                              className="h-1/2 pb-3 pr-3"
+                           >
+                              <Acordion competencia={"Competencia Comunicativa"} momento={2} interpret={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."} />
+                           </Grid>
+                           <Grid 
+                              item 
+                              xs={12} 
+                              md={6} 
+                              className="h-1/2 pb-3 pr-3"
+                           >
+                              <Acordion competencia={"Competencia de Gestión"} momento={3} interpret={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."} />
+                           </Grid>
+                           <Grid 
+                              item 
+                              xs={12} 
+                              md={6} 
+                              className="h-1/2 pb-3 pr-3"
+                           >
+                              <Acordion competencia={"Competencia Investigativa"} momento={1} interpret={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."} />
+                           </Grid>
+                           <Grid 
+                              item 
+                              xs={12} 
+                              md={6} 
+                              className="h-1/2 pr-3"
+                           >
+                              <Acordion competencia={"Competencia Tecnológica"} momento={2} interpret={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."} />
+                           </Grid>
+                        </Grid>
+
+
+                        Accordion
+                              <>
+         <Box
+            className="h-full p-2 bg-tabsbg3 rounded-xl"
+         >
+
+            <motion.div
+               key="card"
+               onClick={() => setIsOpen(!isOpen)}
+               //animate={{ backgroundColor: isOpen ? "#FF0088" : "#0055FF" }}
+               //whileHover={{ scale: 1.01 }}
+               className="h-full"
+            >
+
+               <Box
+                  className="flex items-center justify-between"
+                  sx={{
+                     height: '20%'
+                  }}
+               >
+                  {CHIP}
+                  {ICONO}
+               </Box>
+
+               <ThemeProvider theme={theme}>
+                  <Box 
+                     className="flex items-center"
+                     sx={{
+                        height: '20%'
+                     }}
+                  >
+                     <Typography 
+                        variant="subtitle1" 
+                        component="div"
+                        className="text-subtitulo"
+                     >
+                        {props.competencia}
+                     </Typography>
+                  </Box>
+
+                  <Divider />
+
+                  <Box
+                     className="overflow-auto"
+                     sx={{
+                        height: '60%'
+                     }}
+                  >
+                     <Typography 
+                        variant="body1" 
+                        component="div"
+                        className="text-colorinterpret pt-2 text-xs"
+                     >
+                        {props.interpret}
+                     </Typography>
+                  </Box> 
+
+               </ThemeProvider>
+               
+            </motion.div>
+
+            {/**
+            <AnimatePresence 
+               initial={false}>
+               {isOpen && (
+                  <motion.section
+                     key="answer"
+                     initial="collapsed"
+                     animate="open"
+                     exit="collapsed"
+                     variants={variants}
+                     transition={{ duration: 0.6, easeInOut: [0.98,-0.02,0.12,0.95] }}
+                     //className="p-2 text-lg text-gray-700 border-l border-b border-gray-300"
+                  >
+
+                     <Box
+                        sx = {{
+                           bgcolor: 'white',
+                           borderRadius: 3
+                        }}
+                     >
+                        Yes i do
+                     </Box>
+
+                  </motion.section>
+               )}
+
+            </AnimatePresence>
+            */}
+         </Box>
+            
+      </>
