@@ -12,6 +12,7 @@ import AnalyticsOutlinedIcon from "@mui/icons-material/AnalyticsOutlined";
 
 import TabEncuesta from "./TabEncuesta";
 import TabResultadosIndividuales from "./TabResultadosIndividuales";
+import TabResultadosGenerales from "./TabResultadosGenerales";
 
 const Navigation = () => {
 
@@ -114,11 +115,11 @@ const Navigation = () => {
                   </TabPanel>
 
                   <TabPanel
-                     className='h-full w-full overflow-auto'
+                     className='h-full w-full overflow-auto px-2 pb-2'
                      value={value}
                      index={2}
                   >
-                     Resultados generales
+                     <TabResultadosGenerales />
                   </TabPanel>
 
                </ThemeProvider>

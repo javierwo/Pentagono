@@ -6,10 +6,10 @@ import { StyledEngineProvider } from '@mui/material';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-	<React.StrictMode>
-		{/*Para poder modificar los estilos de mui con tailwind*/}
-		<StyledEngineProvider injectFirst>
-			<App />
-		</StyledEngineProvider>
-	</React.StrictMode>
+	//<React.StrictMode> quitado ya que renderiza 2 veces
+	//Para poder modificar los estilos de mui con tailwind
+	<StyledEngineProvider injectFirst>
+		<App />
+	</StyledEngineProvider>
+
 );

@@ -20,6 +20,11 @@ import { useState } from "react";
 
 import RadarChart from "./RadarChart";
 
+const HEIGHTBUSQUEDA = "10%"
+const HEIGHTRESULTADO = "90%"
+const HEIGHTINDVTITULO = "15%"
+const HEIGHTINDVPENT = "85%"
+
 const TabResultadosIndividuales = (props) => {
 
    var theme = createTheme({
@@ -29,11 +34,6 @@ const TabResultadosIndividuales = (props) => {
    });
 
    theme = responsiveFontSizes(theme);
-
-   const HEIGHTBUSQUEDA = "10%"
-   const HEIGHTRESULTADO = "90%"
-   const HEIGHTINDVTITULO = "15%"
-   const HEIGHTINDVPENT = "85%"
 
    return (
       

@@ -38,21 +38,24 @@ const Acordion = (props) => {
       case 1:
          COLORMOMENTO = COLORMOMENTO1;
          MOMENTO = "Momento Innovador"
-         COLORFONDO = "#F6F6FF"
+         COLORFONDO = "#E6F3F1"
+         //COLORFONDO = "#f9f9f9"
          CHIP = <Chip label={MOMENTO} size="small" className="text-white bg-momento1 text-xs"/>
       break;
       
       case 2:
          COLORMOMENTO = COLORMOMENTO2;
          MOMENTO = "Momento Integrador"
-         COLORFONDO = "#F6FAFF"
+         COLORFONDO = "#E6FFE6"
+         //COLORFONDO = "#f9f9f9"
          CHIP = <Chip label={MOMENTO} size="small" className="text-white bg-momento2 text-xs"/>
       break;
       
       case 3:
          COLORMOMENTO = COLORMOMENTO3;
          MOMENTO = "Momento Explorador"
-         COLORFONDO = "#F6FEFF"
+         COLORFONDO = "#E6FFE6"
+         //COLORFONDO = "#f9f9f9"
          CHIP = <Chip label={MOMENTO} size="small" className="text-white bg-momento3 text-xs"/>
       break;
 
@@ -63,27 +66,27 @@ const Acordion = (props) => {
 
    switch (props.competencia) {
       case "Competencia Pedagógica":
-         ICONO = <SchoolIcon fontSize="medium" sx={{ color: COLORMOMENTO}}> </SchoolIcon>
+         ICONO = <SchoolIcon fontSize="medium" sx={{ color: COLORMOMENTO, marginRight: 1}}> </SchoolIcon>
       break;
       
       case "Competencia Comunicativa":
-         ICONO = <GroupsIcon fontSize="medium" sx={{ color: COLORMOMENTO}}> </GroupsIcon>
+         ICONO = <GroupsIcon fontSize="medium" sx={{ color: COLORMOMENTO, marginRight: 1}}> </GroupsIcon>
       break;
       
       case "Competencia de Gestión":
-         ICONO = <EngineeringIcon fontSize="medium" sx={{ color: COLORMOMENTO}}> </EngineeringIcon>
+         ICONO = <EngineeringIcon fontSize="medium" sx={{ color: COLORMOMENTO, marginRight: 1}}> </EngineeringIcon>
       break;
 
       case "Competencia Investigativa":
-         ICONO = <ContentPasteSearchIcon fontSize="medium" sx={{ color: COLORMOMENTO}}> </ContentPasteSearchIcon>
+         ICONO = <ContentPasteSearchIcon fontSize="medium" sx={{ color: COLORMOMENTO, marginRight: 1}}> </ContentPasteSearchIcon>
       break;
 
       case "Competencia Tecnológica":
-         ICONO = <ComputerIcon fontSize="medium" sx={{ color: COLORMOMENTO}}> </ComputerIcon>
+         ICONO = <ComputerIcon fontSize="medium" sx={{ color: COLORMOMENTO, marginRight: 1}}> </ComputerIcon>
       break;
 
       default:
-         ICONO = <SchoolIcon fontSize="medium" sx={{ color: COLORMOMENTO}}> </SchoolIcon>
+         ICONO = <SchoolIcon fontSize="medium" sx={{ color: COLORMOMENTO, marginRight: 1}}> </SchoolIcon>
    } 
 
    return (
@@ -92,7 +95,7 @@ const Acordion = (props) => {
          <Box>
             <Accordion
                square
-               className="shadow-none border-l-2"
+               className="shadow-none border-l-4"
                sx={{borderColor: COLORMOMENTO, bgcolor: COLORFONDO}}
             >
                <AccordionSummary
@@ -102,6 +105,7 @@ const Acordion = (props) => {
                >
                   <Box>
                      <Box className="text-white text-sm">
+                        {ICONO}
                         {CHIP}
                      </Box>
                      <Box className="text-colordocente text-lg pt-1 font-thin">
