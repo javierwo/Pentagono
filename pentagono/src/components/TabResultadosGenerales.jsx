@@ -5,9 +5,15 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+import Typography from '@mui/material/Typography';
 
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import PrintIcon from '@mui/icons-material/Print';
+
+import RadarChart from "./RadarChart";
 
 const CARR_ARQYURB = [
    { title: 'ARQUITECTURA'},
@@ -172,9 +178,11 @@ const HEIGHTTIT = "8%"
 const HEIGHTFILTROS = "10%"
 const HEIGHTBOTONES = "10%"
 const HEIGHTRESULTADO = "72%"
+const HEIGHTINDVPENT = "85%"
 
 const TabResultadosGenerales = () => {
 
+   //Array de las facultades seleccionadas en el Autocomplete
    const [facultad, setFacultad] = useState([]);
 
    //Obtiene las carreras de acuerdo a la facultad selecccionada
@@ -185,8 +193,8 @@ const TabResultadosGenerales = () => {
       })
    })
 
-   //Carreras de acuerdo a la facultad en el Autocomplete
-   const [carrera, setCarreras] = useState(CARRERAS);
+   //Carreras de acuerdo a la facultad en el Autocomplete (no es necesario)
+   //const [carrera, setCarreras] = useState(CARRERAS);
 
    const [periodo, setPeriodo] = useState([]);
 
@@ -197,6 +205,12 @@ const TabResultadosGenerales = () => {
    const autoFacultadRef = useRef(null);
    const autoCarreraRef = useRef(null);
    const autoPeriodoRef = useRef(null);
+
+   //CONTADORES
+   const [docenteCount, setDocenteCount] = useState('-');
+   const [facultadCount, setFacultadCount] = useState('-');
+   const [carreraCount, setCarreraCount] = useState('-');
+   const [periodoCount, setPeriodoCount] = useState('-');
 
    return (
       <>
@@ -233,7 +247,8 @@ const TabResultadosGenerales = () => {
                getOptionLabel={(option) => option.title}
                onChange={(event, newValue) => {
                   setFacultad(newValue);
-                  setCarreras(CARRERAS)
+                  //setCarreras(CARRERAS);
+                  //setFacultadCount(facultad.length);
                }}
                renderInput={(params) => (
                   <TextField
@@ -295,7 +310,7 @@ const TabResultadosGenerales = () => {
 
          <Stack 
             direction="row" 
-            className="pt-1"
+            className="pt-2"
             spacing={2}
             alignItems="start"
             sx={{ 
@@ -303,35 +318,155 @@ const TabResultadosGenerales = () => {
             }}
          >
             <Button 
+               size='small'
                variant="contained"
                startIcon={<SearchOutlinedIcon />}
                onClick={() => {
-                  console.log(facultad)
-                  console.log(carreraSelected)
-                  console.log(periodo)
+                  console.log(facultad);
+                  console.log(carreraSelected);
+                  console.log(periodo);
+                  if(facultad.length == 0){
+                     setFacultadCount('-');
+                  } else {
+                     setFacultadCount(facultad.length);
+                  }
+
+                  if(carreraSelected.length == 0){
+                     setCarreraCount('-');
+                  } else {
+                     setCarreraCount(carreraSelected.length);
+                  }
+                  if(periodo.length == 0){
+                     setPeriodoCount('-');
+                  } else {
+                     setPeriodoCount(periodo.length);
+                  }
                }}
             >
                Buscar
             </Button>
+            
             <Button 
+               size='small'
+               variant="contained"
+               startIcon={<PrintIcon />}
+               //onClick={() => {}
+            >
+               Imprimir Reporte
+            </Button>
+
+            <Button 
+               size='small'
                variant="outlined"
                startIcon={<CancelOutlinedIcon />}
                onClick={() => {
                   console.log("limpiando")
-                  //setFacultad([]);
+                  const close = document.getElementsByClassName(
+                     "MuiAutocomplete-clearIndicator"
+                  );
+                  close[2].click();
+                  close[1].click();
+                  close[0].click();
                }}
             >
                Limpiar Filtros
             </Button>
+
          </Stack>
 
          <Box 
-            className="px-2 pb-2 box-border bg-white"
+            className="bg-white"
             sx={{ 
                height: HEIGHTRESULTADO
             }}
          > 
-            resultados
+            <Grid 
+               container 
+               className="h-full"
+            >
+               <Grid 
+                  item 
+                  xs={12} 
+                  md={6} 
+                  className="h-full p-3"
+               >  
+                  <Paper
+                     elevation={1}
+                     className='h-full'
+                  >
+                     <Box 
+                        className="h-full rounded-xl bg-white"
+                     >
+                        <RadarChart showTittle={true} />
+                     </Box>
+                  </Paper>
+               </Grid>
+
+               <Grid 
+                  item 
+                  xs={12} 
+                  md={6} 
+                  className="h-full p-3"  
+               >
+                  <Box 
+                     className="text-colordocente overflow-auto"
+                     sx={{
+                        height: '25%'
+                     }}
+                  >
+                     <Stack 
+                        spacing={2} 
+                        direction="row"
+                        className="h-full"
+                     >
+                        <Box 
+                           className="bg-tabsbg3 w-full h-full rounded-xl flex flex-col items-start justify-center px-2"
+                        >
+                           <Typography variant="subtitle1" align='left' className="font-thin">
+                              Docentes
+                           </Typography>
+                           <Typography variant="h4" align='left' className="font-bold">
+                              {docenteCount}
+                           </Typography>
+                        </Box>
+                        <Box 
+                           className="bg-tabsbg3 w-full h-full rounded-xl flex flex-col items-start justify-center px-2"
+                        >
+                           <Typography variant="subtitle1" align='left' className="font-thin">
+                              Facultades
+                           </Typography>
+                           <Typography variant="h4" align='left' className="font-bold">
+                              {facultadCount}
+                           </Typography>
+                        </Box>
+                        <Box 
+                           className="bg-tabsbg3 w-full h-full rounded-xl flex flex-col items-start justify-center px-2"
+                        >
+                           <Typography variant="subtitle1" align='left' className="font-thin">
+                              Carreras
+                           </Typography>
+                           <Typography variant="h4" align='left' className="font-bold">
+                              {carreraCount}
+                           </Typography>
+                        </Box>
+                        <Box 
+                           className="bg-tabsbg3 w-full h-full rounded-xl flex flex-col items-start justify-center px-2"
+                        >
+                           <Typography variant="subtitle1" align='left' className="font-thin">
+                              Periodos
+                           </Typography>
+                           <Typography variant="h4" align='left' className="font-bold">
+                              {periodoCount}
+                           </Typography>
+                        </Box>
+                     </Stack>
+                  </Box>
+               </Grid>
+
+
+
+            </Grid>
+
          </Box>
       
       </>

@@ -11,6 +11,7 @@ module.exports = {
       'tabsbg4': '#fbfbfd',
       'tabscolor': '#828DA9',
       'tabsindicator': '#FF9F00',
+      'mainshadow': '#FFF8E3',
       'indivbg': '#FAFAFA',
       'red': '#FF0000',
       'green': '#00FF00',

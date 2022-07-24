@@ -29,7 +29,7 @@ ChartJS.register(
 );
 
 
-const RadarChart = () => {
+const RadarChart = (props) => {
 
    const momentos = ['Exploratorio', 'Investigativo', 'Funcional'];
 
@@ -73,8 +73,8 @@ const RadarChart = () => {
       }, 
       plugins: {
          title: {
-            display: false,
-            text: 'COMPETENCIAS DOCENTES & TÍTULO', 
+            display: props.showTittle,
+            text: 'PENTÁGONO DE COMPETENCIAS', 
             paddingTop: 4
          },
          subtitle: {

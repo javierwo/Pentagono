@@ -123,7 +123,7 @@ const TabResultadosIndividuales = (props) => {
                         </Box>
 
                         <Paper
-                           elevation={0}
+                           elevation={1}
                            sx={{
                               height: '92%'
                            }}
@@ -131,7 +131,7 @@ const TabResultadosIndividuales = (props) => {
                            <Box 
                               className="h-full rounded-xl bg-white"
                            >
-                              <RadarChart />
+                              <RadarChart showTittle={false}/>
                            </Box>
                         </Paper>
 
