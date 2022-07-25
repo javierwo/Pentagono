@@ -21,9 +21,9 @@ module.exports = {
       'colordocente': '#6e6e73',
       'colorborder': '#D6D6D6',
       'indvtitulo': '#999999',
-      'momento1': "#03045e",
+      'momento3': "#03045e",
       'momento2': "#0077b6",
-      'momento3': "#00b4d8",
+      'momento1': "#00b4d8",
       'colorinterpret': "#999999"
     },
     extend: {},

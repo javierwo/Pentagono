@@ -31,15 +31,13 @@ ChartJS.register(
 
 const RadarChart = (props) => {
 
-   const momentos = ['Exploratorio', 'Investigativo', 'Funcional'];
 
    const data = {
       labels: ['Competencia Pedagógica', 'Competencia Comunicativa', 'Competencia De Gestión', 'Competencia Investigativa', 'Competencia Tecnológica'],
       datasets: [
          {
             label: 'Momento',
-            data: [1,2,3,1,2],
-            //backgroundColor: 'rgba(255, 202, 115, 0.5)',
+            data: props.competencias,
             borderColor: '#FF9F00',
             borderWidth: 2,
          },   
