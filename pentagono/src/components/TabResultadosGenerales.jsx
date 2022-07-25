@@ -200,10 +200,9 @@ const TabResultadosGenerales = () => {
    //Para graficar y llenar los datos
    async function graficar(){
       if (facultadCount!='-'){
-         
+
       }
       for(var i=0; i<facultadCount; i++){
-
       }
     }
 
