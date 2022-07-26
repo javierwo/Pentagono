@@ -186,6 +186,7 @@ const TabResultadosGenerales = () => {
    //Para llenar el combo de los periodos existentes
    const [PERIODOS, setPERIODOS] = useState([]);
    const [llenarPeriodos, setLlenarPeriodos] = useState(true);
+
    async function getPeriodos() {
       const url = "https://script.google.com/macros/s/AKfycbwTaIb7E0zpGxOFQYaMEGGftnK1GWeULdcaZZ9Mo7if3UTGJV5k3FmEOM0TwIX8cyrS/exec?action=periodos"
       const res = await fetch(url);
@@ -262,7 +263,9 @@ const TabResultadosGenerales = () => {
    async function graficar() {
       //const actConteo = await actConteos()
       //console.log("actConteo:", actConteo)
-      const resumen = await consultar()
+      const consulta = await consultar()
+      const resumen = consulta[0]
+      const numDocentes = consulta[1]
       var valores = []
       console.log(resumen)
       if (JSON.stringify(resumen) !== JSON.stringify([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])) {
@@ -306,6 +309,7 @@ const TabResultadosGenerales = () => {
             valores[4] = 0.5
          }
          const comps = await setDatos(valores)
+         setDocenteCount(numDocentes.length)
       } else {
          const comps = await setDatos([0, 0, 0, 0, 0])
       }
@@ -328,6 +332,7 @@ const TabResultadosGenerales = () => {
                   try {
                      console.log(sumaArrays(resumen, result[0]['Pentagono']))
                      resumen = sumaArrays(resumen, result[0]['Pentagono'])
+                     numDocentes = numDocentes.concat(result[0]['Docentes'])
                   } catch {
                      console.log("Error")
                   }
@@ -341,6 +346,7 @@ const TabResultadosGenerales = () => {
                try {
                   console.log(sumaArrays(resumen, result[0]['Pentagono']))
                   resumen = sumaArrays(resumen, result[0]['Pentagono'])
+                  numDocentes = numDocentes.concat(result[0]['Docentes'])
                } catch {
                   console.log("Error")
                }
@@ -357,6 +363,7 @@ const TabResultadosGenerales = () => {
                   try {
                      console.log(sumaArrays(resumen, result[0]['Pentagono']))
                      resumen = sumaArrays(resumen, result[0]['Pentagono'])
+                     numDocentes = numDocentes.concat(result[0]['Docentes'])
                   } catch {
                      console.log("Error")
                   }
@@ -370,6 +377,7 @@ const TabResultadosGenerales = () => {
                try {
                   console.log(sumaArrays(resumen, result[0]['Pentagono']))
                   resumen = sumaArrays(resumen, result[0]['Pentagono'])
+                  numDocentes = numDocentes.concat(result[0]['Docentes'])
                } catch {
                   console.log("Error")
                }
@@ -383,12 +391,15 @@ const TabResultadosGenerales = () => {
             try {
                console.log(sumaArrays(resumen, result[0]['Pentagono']))
                resumen = sumaArrays(resumen, result[0]['Pentagono'])
+               numDocentes = numDocentes.concat(result[0]['Docentes'])
             } catch {
                console.log("Error")
             }
          }
       }
-      return resumen
+      const dataArr = new Set(numDocentes);
+      let numdocsinrep = [...dataArr];
+      return [resumen, numdocsinrep]
    }
 
    //Array de las facultades seleccionadas en el Autocomplete
