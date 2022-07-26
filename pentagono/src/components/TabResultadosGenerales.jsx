@@ -9,6 +9,8 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Typography from '@mui/material/Typography';
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import PrintIcon from '@mui/icons-material/Print';
@@ -179,16 +181,18 @@ const HEIGHTINDVPENT = "85%"
 
 
 const TabResultadosGenerales = () => {
+   const [competencias, setCompetencias] = useState([0, 0, 0, 0, 0]);
+   const [open, setOpen] = useState(false)
    //Para llenar el combo de los periodos existentes
    const [PERIODOS, setPERIODOS] = useState([]);
    const [llenarPeriodos, setLlenarPeriodos] = useState(true);
    async function getPeriodos() {
-      const url = "https://script.google.com/macros/s/AKfycbwbMrpYKTqUhnPrZrIKpD9NjXePRb98BzPaL1KyEp8L0pK6BlsnUmAx7Cv6gjHNUT9P/exec?action=periodos"
+      const url = "https://script.google.com/macros/s/AKfycbwTaIb7E0zpGxOFQYaMEGGftnK1GWeULdcaZZ9Mo7if3UTGJV5k3FmEOM0TwIX8cyrS/exec?action=periodos"
       const res = await fetch(url);
       const result = await res.json();
       var resPeriodos = [];
       for (var i = 0; i < result[0]['Periodos'].length; i++) {
-         resPeriodos.push({ title: result[0]['Periodos'][i]})
+         resPeriodos.push({ title: result[0]['Periodos'][i] })
       }
       setPERIODOS(resPeriodos)
       setLlenarPeriodos(false)
@@ -196,15 +200,196 @@ const TabResultadosGenerales = () => {
    if (llenarPeriodos) {
       getPeriodos()
    }
-
-   //Para graficar y llenar los datos
-   async function graficar(){
-      if (facultadCount!='-'){
-
+   //actualiza cant facultades
+   async function actFacultades(num) {
+      setFacultadCount(num)
+      console.log("Facus actualizadas", facultadCount)
+      return (facultadCount)
+   }
+   //actualiza cant carreras
+   async function actCarreras(num) {
+      setCarreraCount(num)
+      console.log("Carr actualizadas", carreraCount)
+      return (carreraCount)
+   }
+   //actualiza cant periodos
+   async function actPeriodos(num) {
+      setPeriodoCount(num)
+      console.log("Per actualizadas", periodoCount)
+      return (periodoCount)
+   }
+   //actualiza conteos
+   async function actConteos() {
+      console.log("faclen:", facultad.length, "carlen:", carreraSelected.length, "perlen:", periodo.length)
+      var actualizaCar
+      var actualizaPer
+      var actualizaFac
+      if (facultad.length == 0) {
+         actualizaFac = await actFacultades('-')
+      } else {
+         actualizaFac = await actFacultades(facultad.length);
       }
-      for(var i=0; i<facultadCount; i++){
+
+      if (carreraSelected.length == 0) {
+         actualizaCar = await actCarreras('-');
+      } else {
+         actualizaCar = await actCarreras(carreraSelected.length);
       }
-    }
+      if (periodo.length == 0) {
+         actualizaPer = await actPeriodos('-');
+      } else {
+         actualizaPer = await actPeriodos(periodo.length);
+      }
+      console.log("fac:", actualizaFac, "car:", actualizaCar, "per:", actualizaPer)
+      return (actualizaFac, actualizaCar, actualizaPer)
+   }
+
+   //suma arrays termino a termino
+   function sumaArrays(array1, array2) {
+      var arraySumado = []
+      for (var i = 0; i < array1.length; i++) {
+         arraySumado[i] = array1[i] + array2[i]
+      }
+      return arraySumado
+   }
+   //actualiza valores pentagono
+   async function setDatos(comps) {
+      setCompetencias(comps)
+      setOpen(false)
+      return competencias
+   }
+   //grafica pentagono
+   async function graficar() {
+      //const actConteo = await actConteos()
+      //console.log("actConteo:", actConteo)
+      const resumen = await consultar()
+      var valores = []
+      console.log(resumen)
+      if (JSON.stringify(resumen) !== JSON.stringify([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])) {
+         if (resumen[0] >= resumen[1] && resumen[0] >= resumen[2]) {
+            valores[0] = 2.5
+         } else if (resumen[1] > resumen[0] && resumen[1] >= resumen[2]) {
+            valores[0] = 1.5
+         } else if (resumen[2] > resumen[1] && resumen[2] > resumen[0]) {
+            valores[0] = 0.5
+         }
+
+         if (resumen[3] >= resumen[4] && resumen[3] >= resumen[5]) {
+            valores[1] = 2.5
+         } else if (resumen[4] > resumen[3] && resumen[4] >= resumen[5]) {
+            valores[1] = 1.5
+         } else if (resumen[5] > resumen[4] && resumen[5] > resumen[3]) {
+            valores[1] = 0.5
+         }
+
+         if (resumen[6] >= resumen[7] && resumen[6] >= resumen[8]) {
+            valores[2] = 2.5
+         } else if (resumen[7] > resumen[6] && resumen[7] >= resumen[8]) {
+            valores[2] = 1.5
+         } else if (resumen[8] > resumen[7] && resumen[8] > resumen[6]) {
+            valores[2] = 0.5
+         }
+
+         if (resumen[9] >= resumen[10] && resumen[9] >= resumen[11]) {
+            valores[3] = 2.5
+         } else if (resumen[10] > resumen[9] && resumen[10] >= resumen[11]) {
+            valores[3] = 1.5
+         } else if (resumen[11] > resumen[10] && resumen[11] > resumen[9]) {
+            valores[3] = 0.5
+         }
+
+         if (resumen[12] >= resumen[13] && resumen[12] >= resumen[14]) {
+            valores[4] = 2.5
+         } else if (resumen[13] > resumen[12] && resumen[13] >= resumen[14]) {
+            valores[4] = 1.5
+         } else if (resumen[14] > resumen[13] && resumen[14] > resumen[12]) {
+            valores[4] = 0.5
+         }
+         const comps = await setDatos(valores)
+      } else {
+         const comps = await setDatos([0, 0, 0, 0, 0])
+      }
+
+   }
+
+   //consulta los datos
+   async function consultar() {
+      setOpen(true)
+      console.log("llegamos", facultadCount, periodoCount, carreraCount)
+      var resumen = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      var numDocentes = []
+      if (facultadCount != '-' && carreraCount == '-') {
+         if (periodoCount != '-') {
+            for (var i = 0; i < facultadCount; i++) {
+               for (var j = 0; j < periodoCount; j++) {
+                  const url = "https://script.google.com/macros/s/AKfycbwTaIb7E0zpGxOFQYaMEGGftnK1GWeULdcaZZ9Mo7if3UTGJV5k3FmEOM0TwIX8cyrS/exec?action=facultadPeriodo&facultad=" + facultad[i].title + "&periodo=" + periodo[j].title
+                  const res = await fetch(url);
+                  const result = await res.json();
+                  try {
+                     console.log(sumaArrays(resumen, result[0]['Pentagono']))
+                     resumen = sumaArrays(resumen, result[0]['Pentagono'])
+                  } catch {
+                     console.log("Error")
+                  }
+               }
+            }
+         } else {
+            for (var i = 0; i < facultadCount; i++) {
+               const url = "https://script.google.com/macros/s/AKfycbwTaIb7E0zpGxOFQYaMEGGftnK1GWeULdcaZZ9Mo7if3UTGJV5k3FmEOM0TwIX8cyrS/exec?action=facultad&facultad=" + facultad[i].title
+               const res = await fetch(url);
+               const result = await res.json();
+               try {
+                  console.log(sumaArrays(resumen, result[0]['Pentagono']))
+                  resumen = sumaArrays(resumen, result[0]['Pentagono'])
+               } catch {
+                  console.log("Error")
+               }
+               console.log(facultad[i].title)
+            }
+         }
+      } else if (carreraCount != '-') {
+         if (periodoCount != '-') {
+            for (var i = 0; i < carreraCount; i++) {
+               for (var j = 0; j < periodoCount; j++) {
+                  const url = "https://script.google.com/macros/s/AKfycbwTaIb7E0zpGxOFQYaMEGGftnK1GWeULdcaZZ9Mo7if3UTGJV5k3FmEOM0TwIX8cyrS/exec?action=carreraPeriodo&carrera=" + carreraSelected[i].title + "&periodo=" + periodo[j].title
+                  const res = await fetch(url);
+                  const result = await res.json();
+                  try {
+                     console.log(sumaArrays(resumen, result[0]['Pentagono']))
+                     resumen = sumaArrays(resumen, result[0]['Pentagono'])
+                  } catch {
+                     console.log("Error")
+                  }
+               }
+            }
+         } else {
+            for (var i = 0; i < carreraCount; i++) {
+               const url = "https://script.google.com/macros/s/AKfycbwTaIb7E0zpGxOFQYaMEGGftnK1GWeULdcaZZ9Mo7if3UTGJV5k3FmEOM0TwIX8cyrS/exec?action=carrera&carrera=" + carreraSelected[i].title
+               const res = await fetch(url);
+               const result = await res.json();
+               try {
+                  console.log(sumaArrays(resumen, result[0]['Pentagono']))
+                  resumen = sumaArrays(resumen, result[0]['Pentagono'])
+               } catch {
+                  console.log("Error")
+               }
+            }
+         }
+      } else {
+         for (var j = 0; j < periodoCount; j++) {
+            const url = "https://script.google.com/macros/s/AKfycbwTaIb7E0zpGxOFQYaMEGGftnK1GWeULdcaZZ9Mo7if3UTGJV5k3FmEOM0TwIX8cyrS/exec?action=periodo&periodo=" + periodo[j].title
+            const res = await fetch(url);
+            const result = await res.json();
+            try {
+               console.log(sumaArrays(resumen, result[0]['Pentagono']))
+               resumen = sumaArrays(resumen, result[0]['Pentagono'])
+            } catch {
+               console.log("Error")
+            }
+         }
+      }
+      return resumen
+   }
 
    //Array de las facultades seleccionadas en el Autocomplete
    const [facultad, setFacultad] = useState([]);
@@ -238,6 +423,12 @@ const TabResultadosGenerales = () => {
 
    return (
       <>
+         <Backdrop
+            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={open}
+         >
+            <CircularProgress color="inherit" />
+         </Backdrop>
          <Box
             className="flex items-end"
             sx={{
@@ -270,7 +461,7 @@ const TabResultadosGenerales = () => {
                options={FACULTADES}
                getOptionLabel={(option) => option.title}
                onChange={(event, newValue) => {
-                  setFacultad(newValue);
+                  setFacultad(newValue); console.log("facultades:" + facultad)
                   //setCarreras(CARRERAS);
                   //setFacultadCount(facultad.length);
                }}
@@ -294,7 +485,7 @@ const TabResultadosGenerales = () => {
                id="tags-carrera"
                options={CARRERAS}
                onChange={(event, newValue) => {
-                  setCarrerasSelected(newValue)
+                  setCarrerasSelected(newValue); console.log("carreras:" + carreraSelected)
                }}
                getOptionLabel={(option) => option.title}
                renderInput={(params) => (
@@ -318,7 +509,7 @@ const TabResultadosGenerales = () => {
                options={PERIODOS}
                getOptionLabel={(option) => option.title}
                onChange={(event, newValue) => {
-                  setPeriodo(newValue);
+                  setPeriodo(newValue); console.log("periodos:" + periodo)
                }}
                renderInput={(params) => (
                   <TextField
@@ -326,7 +517,7 @@ const TabResultadosGenerales = () => {
                      ref={autoPeriodoRef}
                      className="bg-white"
                      label="Filtro por Periodo Académico"
-                     placeholder="Perdiodo Académico"
+                     placeholder="Periodo Académico"
                   />
                )}
             />
@@ -365,19 +556,18 @@ const TabResultadosGenerales = () => {
                   } else {
                      setPeriodoCount(periodo.length);
                   }
-                  graficar();
                }}
             >
-               Buscar
+               Aplicar Filtros
             </Button>
 
             <Button
                size='small'
                variant="contained"
                startIcon={<PrintIcon />}
-            //onClick={() => {}
+               onClick={() => { graficar(); }}
             >
-               Imprimir Reporte
+               Graficar
             </Button>
 
             <Button
@@ -422,7 +612,7 @@ const TabResultadosGenerales = () => {
                      <Box
                         className="h-full rounded-xl bg-white"
                      >
-                        <RadarChart showTittle={true} />
+                        <RadarChart competencias={competencias} showTittle={true} />
                      </Box>
                   </Paper>
                </Grid>
@@ -434,9 +624,9 @@ const TabResultadosGenerales = () => {
                   className="h-full p-3"
                >
                   <Box
-                     className="text-colordocente overflow-auto"
+                     className="text-colordocente overflow-auto mb-2"
                      sx={{
-                        height: '25%'
+                        height: '50%'
                      }}
                   >
                      <Stack
@@ -464,6 +654,19 @@ const TabResultadosGenerales = () => {
                               {facultadCount}
                            </Typography>
                         </Box>
+                     </Stack>
+                  </Box>
+                  <Box
+                     className="text-colordocente overflow-auto mt-2"
+                     sx={{
+                        height: '50%'
+                     }}
+                  >
+                     <Stack
+                        spacing={2}
+                        direction="row"
+                        className="h-full"
+                     >
                         <Box
                            className="bg-tabsbg3 w-full h-full rounded-xl flex flex-col items-start justify-center px-2"
                         >

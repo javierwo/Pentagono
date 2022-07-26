@@ -38,7 +38,7 @@ const TabResultadosIndividuales = (props) => {
 
    async function graficar(){
       setOpen(true)
-      const url = "https://script.google.com/macros/s/AKfycbwbMrpYKTqUhnPrZrIKpD9NjXePRb98BzPaL1KyEp8L0pK6BlsnUmAx7Cv6gjHNUT9P/exec?action=docente&cedula=" + cedula
+      const url = "https://script.google.com/macros/s/AKfycbwTaIb7E0zpGxOFQYaMEGGftnK1GWeULdcaZZ9Mo7if3UTGJV5k3FmEOM0TwIX8cyrS/exec?action=docente&cedula=" + cedula
       const res = await fetch(url);
       const result = await res.json();
       try {

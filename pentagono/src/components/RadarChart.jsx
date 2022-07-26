@@ -69,6 +69,9 @@ const RadarChart = (props) => {
       layout: {
          padding: 5
       }, 
+      animation: {
+         duration:0
+      },
       plugins: {
          title: {
             display: props.showTittle,
