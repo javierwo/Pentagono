@@ -23,9 +23,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Acordion = (props) => {
 
-   const COLORMOMENTO1 = "#03045e";
+   const COLORMOMENTO3 = "#03045e";
    const COLORMOMENTO2 = "#0077b6";
-   const COLORMOMENTO3 = "#00b4d8";
+   const COLORMOMENTO1 = "#00b4d8";
 
    let COLORFONDO;
 
@@ -35,7 +35,7 @@ const Acordion = (props) => {
    let CHIP;
 
    switch (props.momento) {
-      case 1:
+      case 0.5:
          COLORMOMENTO = COLORMOMENTO1;
          MOMENTO = "Momento Innovador"
          COLORFONDO = "#E6F3F1"
@@ -43,7 +43,7 @@ const Acordion = (props) => {
          CHIP = <Chip label={MOMENTO} size="small" className="text-white bg-momento1 text-xs"/>
       break;
       
-      case 2:
+      case 1.5:
          COLORMOMENTO = COLORMOMENTO2;
          MOMENTO = "Momento Integrador"
          COLORFONDO = "#E6FFE6"
@@ -51,7 +51,7 @@ const Acordion = (props) => {
          CHIP = <Chip label={MOMENTO} size="small" className="text-white bg-momento2 text-xs"/>
       break;
       
-      case 3:
+      case 2.5:
          COLORMOMENTO = COLORMOMENTO3;
          MOMENTO = "Momento Explorador"
          COLORFONDO = "#E6FFE6"
