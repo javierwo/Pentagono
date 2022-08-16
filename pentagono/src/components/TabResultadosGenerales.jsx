@@ -556,7 +556,6 @@ const TabResultadosGenerales = () => {
                   } else {
                      setFacultadCount(facultad.length);
                   }
-
                   if (carreraSelected.length == 0) {
                      setCarreraCount('-');
                   } else {
@@ -590,14 +589,19 @@ const TabResultadosGenerales = () => {
                   const close = document.getElementsByClassName(
                      "MuiAutocomplete-clearIndicator"
                   );
-                  close[2].click();
-                  close[1].click();
-                  close[0].click();
+                  if (close[2]!=null){
+                     close[2].click();
+                  }
+                  if (close[1]!=null){
+                     close[1].click();
+                  }                  
+                  if (close[0]!=null){
+                     close[0].click();
+                  }
                }}
             >
                Limpiar Filtros
             </Button>
-
          </Stack>
 
          <Box
@@ -634,11 +638,10 @@ const TabResultadosGenerales = () => {
                   md={6}
                   className="h-full p-3"
                >
-                  <Box
-                     className="text-colordocente overflow-auto mb-2"
-                     sx={{
-                        height: '50%'
-                     }}
+                  <Stack
+                     spacing={2}
+                     direction="column"
+                     className="h-full"
                   >
                      <Stack
                         spacing={2}
@@ -666,13 +669,7 @@ const TabResultadosGenerales = () => {
                            </Typography>
                         </Box>
                      </Stack>
-                  </Box>
-                  <Box
-                     className="text-colordocente overflow-auto mt-2"
-                     sx={{
-                        height: '50%'
-                     }}
-                  >
+
                      <Stack
                         spacing={2}
                         direction="row"
@@ -699,11 +696,8 @@ const TabResultadosGenerales = () => {
                            </Typography>
                         </Box>
                      </Stack>
-                  </Box>
+                  </Stack>
                </Grid>
-
-
-
             </Grid>
 
          </Box>

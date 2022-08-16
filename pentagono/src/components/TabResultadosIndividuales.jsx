@@ -52,7 +52,7 @@ const TabResultadosIndividuales = (props) => {
          setOpen(false)
          console.log("Error")
       }
-    }
+   }
 
    return (
 

@@ -31,7 +31,6 @@ ChartJS.register(
 
 const RadarChart = (props) => {
 
-
    const data = {
       labels: ['Competencia Pedagógica', 'Competencia Comunicativa', 'Competencia De Gestión', 'Competencia Investigativa', 'Competencia Tecnológica'],
       datasets: [
@@ -41,7 +40,6 @@ const RadarChart = (props) => {
             borderColor: '#FF9F00',
             borderWidth: 2,
          },   
-      
          {
             backgroundColor: "#00b4d8",
             pointRadius: 0,
