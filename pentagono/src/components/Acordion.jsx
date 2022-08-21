@@ -27,8 +27,6 @@ const Acordion = (props) => {
    const COLORMOMENTO2 = "#0077b6";
    const COLORMOMENTO1 = "#00b4d8";
 
-   let COLORFONDO;
-
    let COLORMOMENTO; 
    let MOMENTO; 
    let ICONO;
@@ -38,24 +36,18 @@ const Acordion = (props) => {
       case 0.5:
          COLORMOMENTO = COLORMOMENTO1;
          MOMENTO = "Momento Innovador"
-         COLORFONDO = "#E6F3F1"
-         //COLORFONDO = "#f9f9f9"
          CHIP = <Chip label={MOMENTO} size="small" className="text-white bg-momento1 text-xs"/>
       break;
       
       case 1.5:
          COLORMOMENTO = COLORMOMENTO2;
          MOMENTO = "Momento Integrador"
-         COLORFONDO = "#E6FFE6"
-         //COLORFONDO = "#f9f9f9"
          CHIP = <Chip label={MOMENTO} size="small" className="text-white bg-momento2 text-xs"/>
       break;
       
       case 2.5:
          COLORMOMENTO = COLORMOMENTO3;
          MOMENTO = "Momento Explorador"
-         COLORFONDO = "#E6FFE6"
-         //COLORFONDO = "#f9f9f9"
          CHIP = <Chip label={MOMENTO} size="small" className="text-white bg-momento3 text-xs"/>
       break;
 
@@ -95,8 +87,8 @@ const Acordion = (props) => {
          <Box>
             <Accordion
                square
-               className="shadow-none border-l-4"
-               sx={{borderColor: COLORMOMENTO, bgcolor: COLORFONDO}}
+               className="shadow-none border-l-4 bg-tabsbg3"
+               sx={{borderColor: COLORMOMENTO}}
             >
                <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}

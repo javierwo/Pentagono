@@ -187,6 +187,13 @@ const TabResultadosGenerales = () => {
    const [PERIODOS, setPERIODOS] = useState([]);
    const [llenarPeriodos, setLlenarPeriodos] = useState(true);
 
+   //la data para el pentagono
+   const [data, setData] = useState(null);
+   const [exists, setExists] = useState(false);
+   const [mensaje, setMensaje] = useState(
+		"Aplique filtros para generar resultados XXX"
+	);
+
    async function getPeriodos() {
       const url = "https://script.google.com/macros/s/AKfycbwTaIb7E0zpGxOFQYaMEGGftnK1GWeULdcaZZ9Mo7if3UTGJV5k3FmEOM0TwIX8cyrS/exec?action=periodos"
       const res = await fetch(url);
@@ -604,103 +611,120 @@ const TabResultadosGenerales = () => {
             </Button>
          </Stack>
 
-         <Box
-            className="bg-white"
-            sx={{
-               height: HEIGHTRESULTADO
-            }}
-         >
-            <Grid
-               container
-               className="h-full"
-            >
-               <Grid
-                  item
-                  xs={12}
-                  md={6}
-                  className="h-full p-3"
+         {!exists ? (
+            <>
+               <Box 
+                  className="flex items-center justify-center bg-white"
+                  sx={{
+                     height: HEIGHTRESULTADO
+                  }}
                >
-                  <Paper
-                     elevation={1}
-                     className='h-full'
-                  >
-                     <Box
-                        className="h-full rounded-xl bg-white"
-                     >
-                        <RadarChart competencias={competencias} showTittle={true} />
-                     </Box>
-                  </Paper>
-               </Grid>
-
-               <Grid
-                  item
-                  xs={12}
-                  md={6}
-                  className="h-full p-3"
+                  <Typography variant="h6" className="text-colordocente">
+                     {mensaje}
+                  </Typography>
+               </Box>
+            </>
+         ) : (
+				<>
+               <Box
+                  className="bg-white"
+                  sx={{
+                     height: HEIGHTRESULTADO
+                  }}
                >
-                  <Stack
-                     spacing={2}
-                     direction="column"
+                  <Grid
+                     container
                      className="h-full"
                   >
-                     <Stack
-                        spacing={2}
-                        direction="row"
-                        className="h-full"
+                     <Grid
+                        item
+                        xs={12}
+                        md={6}
+                        className="h-full p-3"
                      >
-                        <Box
-                           className="bg-tabsbg3 w-full h-full rounded-xl flex flex-col items-start justify-center px-2"
+                        <Paper
+                           elevation={1}
+                           className='h-full'
                         >
-                           <Typography variant="subtitle1" align='left' className="font-thin">
-                              Docentes
-                           </Typography>
-                           <Typography variant="h4" align='left' className="font-bold">
-                              {docenteCount}
-                           </Typography>
-                        </Box>
-                        <Box
-                           className="bg-tabsbg3 w-full h-full rounded-xl flex flex-col items-start justify-center px-2"
-                        >
-                           <Typography variant="subtitle1" align='left' className="font-thin">
-                              Facultades
-                           </Typography>
-                           <Typography variant="h4" align='left' className="font-bold">
-                              {facultadCount}
-                           </Typography>
-                        </Box>
-                     </Stack>
+                           <Box
+                              className="h-full rounded-xl bg-white"
+                           >
+                              <RadarChart competencias={competencias} showTittle={true} />
+                           </Box>
+                        </Paper>
+                     </Grid>
 
-                     <Stack
-                        spacing={2}
-                        direction="row"
-                        className="h-full"
+                     <Grid
+                        item
+                        xs={12}
+                        md={6}
+                        className="h-full p-3"
                      >
-                        <Box
-                           className="bg-tabsbg3 w-full h-full rounded-xl flex flex-col items-start justify-center px-2"
+                        <Stack
+                           spacing={2}
+                           direction="column"
+                           className="h-full"
                         >
-                           <Typography variant="subtitle1" align='left' className="font-thin">
-                              Carreras
-                           </Typography>
-                           <Typography variant="h4" align='left' className="font-bold">
-                              {carreraCount}
-                           </Typography>
-                        </Box>
-                        <Box
-                           className="bg-tabsbg3 w-full h-full rounded-xl flex flex-col items-start justify-center px-2"
-                        >
-                           <Typography variant="subtitle1" align='left' className="font-thin">
-                              Periodos
-                           </Typography>
-                           <Typography variant="h4" align='left' className="font-bold">
-                              {periodoCount}
-                           </Typography>
-                        </Box>
-                     </Stack>
-                  </Stack>
-               </Grid>
-            </Grid>
+                           <Stack
+                              spacing={2}
+                              direction="row"
+                              className="h-full"
+                           >
+                              <Box
+                                 className="bg-tabsbg3 w-full h-full rounded-xl flex flex-col items-start justify-center px-2"
+                              >
+                                 <Typography variant="subtitle1" align='left' className="font-thin">
+                                    Docentes
+                                 </Typography>
+                                 <Typography variant="h4" align='left' className="font-bold">
+                                    {docenteCount}
+                                 </Typography>
+                              </Box>
+                              <Box
+                                 className="bg-tabsbg3 w-full h-full rounded-xl flex flex-col items-start justify-center px-2"
+                              >
+                                 <Typography variant="subtitle1" align='left' className="font-thin">
+                                    Facultades
+                                 </Typography>
+                                 <Typography variant="h4" align='left' className="font-bold">
+                                    {facultadCount}
+                                 </Typography>
+                              </Box>
+                           </Stack>
 
-         </Box>
+                           <Stack
+                              spacing={2}
+                              direction="row"
+                              className="h-full"
+                           >
+                              <Box
+                                 className="bg-tabsbg3 w-full h-full rounded-xl flex flex-col items-start justify-center px-2"
+                              >
+                                 <Typography variant="subtitle1" align='left' className="font-thin">
+                                    Carreras
+                                 </Typography>
+                                 <Typography variant="h4" align='left' className="font-bold">
+                                    {carreraCount}
+                                 </Typography>
+                              </Box>
+                              <Box
+                                 className="bg-tabsbg3 w-full h-full rounded-xl flex flex-col items-start justify-center px-2"
+                              >
+                                 <Typography variant="subtitle1" align='left' className="font-thin">
+                                    Periodos
+                                 </Typography>
+                                 <Typography variant="h4" align='left' className="font-bold">
+                                    {periodoCount}
+                                 </Typography>
+                              </Box>
+                           </Stack>
+                        </Stack>
+                     </Grid>
+                  </Grid>
+
+               </Box>
+            </>
+			)}
 
       </>
    )

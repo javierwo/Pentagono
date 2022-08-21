@@ -28,37 +28,61 @@ ChartJS.register(
    SubTitle
 );
 
+const borders = [
+   '#FF9F00',
+   '#407D6C',
+   '#B5C7CC',
+   '#BE529E',
+   '#D5273E',
+   '#F76150',
+   '#FEC4B9',
+   '#FEC4B9',
+   '#01BDCC',
+   '#3EA285',
+]
 
 const RadarChart = (props) => {
 
+   console.log(props.data);   
+   
+   const datas = [];
+   var contador = 0
+
+   props.data.forEach(element => {
+      datas.push({
+         label: props.isTeacher ? "Momento" : element["Nombre"],
+         data: element["Pentagono"],
+         borderColor: borders[contador],
+         borderWidth: 4
+      });
+      contador++;
+   });
+
+   datas.push(  
+      {
+         backgroundColor: "#00b4d8",
+         pointRadius: 0,
+         borderWidth: 0,
+         data: [1,1,1,1,1]
+      },
+      {
+         backgroundColor: "#0077b6",
+         pointRadius: 0,
+         borderWidth: 0,
+         data: [2,2,2,2,2]
+      },
+      {
+         backgroundColor: "#03045e",
+         pointRadius: 0,
+         borderWidth: 0,
+         data: [3,3,3,3,3]
+      },   
+   );
+
+
    const data = {
       labels: ['Competencia Pedagógica', 'Competencia Comunicativa', 'Competencia De Gestión', 'Competencia Investigativa', 'Competencia Tecnológica'],
-      datasets: [
-         {
-            label: 'Momento',
-            data: props.competencias,
-            borderColor: '#FF9F00',
-            borderWidth: 2,
-         },   
-         {
-            backgroundColor: "#00b4d8",
-            pointRadius: 0,
-            borderWidth: 0,
-            data: [1,1,1,1,1]
-         },
-         {
-            backgroundColor: "#0077b6",
-            pointRadius: 0,
-            borderWidth: 0,
-            data: [2,2,2,2,2]
-         },
-         {
-            backgroundColor: "#03045e",
-            pointRadius: 0,
-            borderWidth: 0,
-            data: [3,3,3,3,3]
-         },
-      ]
+      datasets: datas
    }
 
    const options = { 
@@ -83,14 +107,13 @@ const RadarChart = (props) => {
          legend: {
             labels: {
                filter: function(item, chart) {
-                  return item.datasetIndex !== 1  && item.datasetIndex !== 2 && item.datasetIndex !== 3;
+                  return item.datasetIndex !== datas.length-3  && item.datasetIndex !== datas.length-2 && item.datasetIndex !== datas.length-1;
                }
             }
          },
          tooltip: {
             enabled: false
          }
-      
       },
 
       elements: {
@@ -132,11 +155,8 @@ const RadarChart = (props) => {
                   size: 13
                }
             }
-         
          }
-
       }, 
-      
    }
 
    return (
